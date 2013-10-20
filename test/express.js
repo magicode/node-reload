@@ -6,11 +6,11 @@ var express = require('express');
 var app = express();  
 
     
-if(!reload.sessionStore) reload.sessionStore = new express.session.MemoryStore();
+if(!reload.sessionUse) reload.sessionUse = express.session({ store: new express.session.MemoryStore()});
     
      
 app.use(express.cookieParser('<your secret here>'));
-app.use(express.session({ store: reload.sessionStore }));
+app.use(reload.sessionUse);
 app.use(app.router);
     
 app.get("/",function(req,res){
@@ -21,8 +21,6 @@ app.get("/",function(req,res){
 reload.app = app;
 
 
-//console.log(process._reload)
-//if(!reload.first) console.log("reload app");
 if(reload.first){
     var http = require("http");
     
@@ -44,7 +42,7 @@ if(reload.first){
                 String((process.memoryUsage().heapTotal / Math.pow(1024,2)).toFixed(1)) , 
                 reload.count || 0);
             
-        },10000);
+        },1000);
     }
 }
 
