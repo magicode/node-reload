@@ -32,7 +32,7 @@ module.exports =  function reload( options ){
      
     options = 'object' == typeof options ? options : {};
     
-    var defaultOptions = { watch: true ,  watchWait: 1000 };
+    var defaultOptions = { watch: true ,  watchWait: 1000 , match: /\.(js|json)$/ };
     
     for(var key in defaultOptions)
         if(!(key in options)) options[key] = defaultOptions[key];
@@ -49,13 +49,16 @@ module.exports =  function reload( options ){
         var waitEnd = false;
         
         wd.on("change",function(event,filename){
+            if('function' == typeof options.match.test && !options.match.test(filename))
+                return;
+                
             if(waitEnd)return;
             waitEnd = true;
-            
             setTimeout(function() {
-                waitEnd = false;
                 run();
+                waitEnd = false;
             },options.watchWait);
+            
         });
     }
     
