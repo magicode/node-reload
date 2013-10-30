@@ -1,15 +1,15 @@
 {
-  "name": "node-reload",
-  "description": "reload node app without lost objects",
+  "name": "relive",
+  "description": "reload apps without loss connections or sessions, good for production or development",
   "main": "./reload",
   "repository": {
     "type": "git",
     "url": "https://github.com/magicode/node-reload.git"
   },
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "magicode",
   "keywords": [
-    "reload"
+    "reload" ,"relive"
   ],
   "devDependencies": {
     "express": "~3.4.2",

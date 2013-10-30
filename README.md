@@ -4,11 +4,15 @@ node-reload
 
 reload apps without loss connections or sessions, good for production or development
 
+## Installation
 
-example 
+    $ npm install relive
+
+
+## Example
 
 ```javascript
-var reload = require("../reload")();
+var reload = require("relive")();
 var express = require('express');
 var app = express();  
 
