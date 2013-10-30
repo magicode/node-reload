@@ -20,8 +20,7 @@ module.exports =  function reload( options ){
     if("main" == type){
         if(!process.mainModule) return obj;
         
-        if(module.parent.parent || obj.reload) {
-            module.parent.parent = null;
+        if(obj.reload) {
             obj.first = false;
             return obj;
         }
