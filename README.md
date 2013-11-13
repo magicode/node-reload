@@ -2,7 +2,7 @@ node-reload
 ===========
 
 
-reload apps without loss connections or sessions, good for production or development
+Auto reload apps without loss connections or sessions, good for production or development
 
 ## Installation
 
@@ -43,3 +43,20 @@ if(relive.first){
     console.log("reload app");
 }
 ```
+
+##Options
+
+#### global.relive = require("relive")(`options`);
+
+* `watch` watch changes (default: `true`)
+* `watchDir` path of directory  for watch changes (default: `pwd`)
+* `match` object Regexp for filter file watch (default: `/\.(js|json)$/`)
+* `watchWait` milliseconds wait to reload (for many changes) (default: `1000`)
+
+
+
+
+
+
+
+
