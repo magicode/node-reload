@@ -21,6 +21,13 @@ function WatchDir(options){
 util.inherits(WatchDir, EventEmitter);
 
 
+WatchDir.prototype.removeAll = function(){
+    for(var file in this._dirs){
+        this._dirs[file].close();
+        delete this._dirs[file];
+    }
+};
+
 WatchDir.prototype.remove = function(dirname){
     dirname = path.resolve(dirname);
     

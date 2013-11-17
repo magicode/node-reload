@@ -1,24 +1,12 @@
-node-reload
-===========
 
 
-Auto reload apps without loss connections or sessions, good for production or development
-
-## Installation
-
-    $ npm install relive
-
-
-## Example
-
-```javascript
-global.relive = require("relive")();
+global.relive = require("../relive");
 var express = require('express');
 var app = express();  
 
     
 if(!relive.sessionUse) relive.sessionUse = express.session({ store: new express.session.MemoryStore()});
-    
+     
       
 app.use(express.cookieParser('<your secret here>'));
 app.use(relive.sessionUse);
@@ -42,20 +30,4 @@ if(relive.first){
 }else{
     console.log("reload app");
 }
-```
-
-##Options
-
-#### global.relive = require("relive")(`options`);
-
-* `watch` array of directories OR string of directory OR boolean `true` -> pwd  `false` -> disable watch  (default: `true`)
-* `watchMatch` object Regex for filter change file (default: `/\.(js|json)$/`)
-* `watchDelay` delay milliseconds to reload (for many changes) (default: `1000`)
-
-
-
-
-
-
-
 
